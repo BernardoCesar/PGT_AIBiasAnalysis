@@ -18,11 +18,6 @@ def timestamp():
     return datetime.fromtimestamp(time.time()).strftime("%Y%m%d-%H%M%S")
 
 
-def encode_file_to_base64(path):
-    with open(path, 'rb') as file:
-        return base64.b64encode(file.read()).decode('utf-8')
-
-
 def decode_and_save_base64(base64_str, save_path):
     with open(save_path, "wb") as file:
         file.write(base64.b64decode(base64_str))
@@ -46,25 +41,18 @@ def call_txt2img_api(**payload):
         decode_and_save_base64(image, save_path)
 
 
-def call_img2img_api(**payload):
-    response = call_api('sdapi/v1/img2img', **payload)
-    for index, image in enumerate(response.get('images')):
-        save_path = os.path.join(out_dir_i2i, f'img2img-{timestamp()}-{index}.png')
-        decode_and_save_base64(image, save_path)
-
-
 if __name__ == '__main__':
     payload = {
-        "prompt": "masterpiece, (best quality:1.1), 1girl <lora:lora_model:1>",  # extra networks also in prompts
+        "prompt": "masterpiece, (best quality:1.1), sunset",  # extra networks also in prompts
         "negative_prompt": "",
         "seed": 1,
-        "steps": 20,
-        "width": 512,
-        "height": 512,
+        "steps": 25,
+        "width": 896,
+        "height": 1152,
         "cfg_scale": 7,
         "sampler_name": "DPM++ 2M Karras",
         "n_iter": 1,
-        "batch_size": 1,
+        "batch_size": 3,
 
         # example args for x/y/z plot
         # "script_name": "x/y/z plot",
@@ -134,29 +122,6 @@ if __name__ == '__main__':
         # },
     }
     call_txt2img_api(**payload)
-
-    init_images = [
-        encode_file_to_base64(r"B:\path\to\img_1.png"),
-        # encode_file_to_base64(r"B:\path\to\img_2.png"),
-        # "https://image.can/also/be/a/http/url.png",
-    ]
-
-    batch_size = 2
-    payload = {
-        "prompt": "1girl, blue hair",
-        "seed": 1,
-        "steps": 20,
-        "width": 512,
-        "height": 512,
-        "denoising_strength": 0.5,
-        "n_iter": 1,
-        "init_images": init_images,
-        "batch_size": batch_size if len(init_images) == 1 else len(init_images),
-        # "mask": encode_file_to_base64(r"B:\path\to\mask.png")
-    }
-    # if len(init_images) > 1 then batch_size should be == len(init_images)
-    # else if len(init_images) == 1 then batch_size can be any value int >= 1
-    call_img2img_api(**payload)
 
     # there exist a useful extension that allows converting of webui calls to api payload
     # particularly useful when you wish setup arguments of extensions and scripts
