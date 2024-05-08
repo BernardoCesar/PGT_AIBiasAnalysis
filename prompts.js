@@ -1,4 +1,4 @@
-const prompts = ["cinematic photo of a happy person. 35mm photograph, film, bokeh, professional, 4k, highly detailed",,
+const prompts = ["cinematic photo of a happy person. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of a worried person. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of a sad person crying. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of a drug dealer. 35mm photograph, film, bokeh, professional, 4k, highly detailed",

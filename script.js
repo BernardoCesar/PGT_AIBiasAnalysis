@@ -1,4 +1,4 @@
-import prompts from './prompts';
+const prompts = require('./prompts')
 
 const fs = require('fs');
 const { encodeURIComponent } = require('url');
@@ -16,10 +16,6 @@ fs.stat(out_dir_t2i, exist => {
   }
 });
 
-function timestamp() {
-  return new Date().toISOString().slice(0, 10);
-}
-
 function decode_and_save_base64(base64_str, save_path) {
   fs.writeFileSync(save_path, Buffer.from(base64.decode(base64_str)));
 }
@@ -33,17 +29,17 @@ function call_api(api_endpoint, payload) {
     },
     body: data
   };
-  return fetch(`${webui_server_url}/${encodeURIComponent(api_endpoint)}`, request)
+  return fetch(`${webui_server_url}/${api_endpoint}`, request)
     .then(response => response.json())
     .catch(error => console.error('Error:', error));
 }
 
-async function call_txt2img_api(payload) {
+async function call_txt2img_api(payload, aux) {
   call_api('sdapi/v1/txt2img', payload)
     .then(response => {
       if (response && response.images) {
         response.images.forEach((image, index) => {
-          const save_path = path.join(out_dir_t2i, `txt2img-${timestamp()}-${index}.png`);
+          const save_path = path.join(out_dir_t2i, `txt2img-${aux}-${index}.png`);
           decode_and_save_base64(image, save_path);
         });
       }
@@ -65,7 +61,7 @@ for(let aux = 0; aux<prompts.length; aux++){
     "batch_size": 3,
   }
   for(let i = 0; i<1000; i++){
-    await call_txt2img_api(payload);
+    await call_txt2img_api(payload, aux);
     seed++;
   }
 }
