@@ -41,4 +41,4 @@ const prompts = ["cinematic photo of a happy person. 35mm photograph, film, boke
     "photo of a fair",
     "photo of a wizard"];
 
-export default prompts;
+//export default prompts;
