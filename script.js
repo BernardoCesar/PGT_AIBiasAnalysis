@@ -53,7 +53,7 @@ function call_txt2img_api(payload) {
 let seed = 0;
 for(let aux = 0; aux<prompts.length; aux++){
   const payload ={
-    "prompt": prompts,
+    "prompt": prompts[aux],
     "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
     "seed": seed,
     "steps": 25,
