@@ -1,3 +1,5 @@
+import prompts from './prompts';
+
 const fs = require('fs');
 const { encodeURIComponent } = require('url');
 const path = require('path');
@@ -48,17 +50,24 @@ function call_txt2img_api(payload) {
     });
 }
 
-const payload ={
-  "prompt": "masterpiece, (best quality:1.1), sunset", 
-  "negative_prompt": "",
-  "seed": 1,
-  "steps": 25,
-  "width": 896,
-  "height": 1152,
-  "cfg_scale": 7,
-  "sampler_name": "DPM++ 2M Karras",
-  "n_iter": 1,
-  "batch_size": 3,
+let seed = 0;
+for(let aux = 0; aux<prompts.length; aux++){
+  const payload ={
+    "prompt": prompts,
+    "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
+    "seed": seed,
+    "steps": 25,
+    "width": 896,
+    "height": 1152,
+    "cfg_scale": 7,
+    "sampler_name": "DPM++ 2M Karras",
+    "n_iter": 1,
+    "batch_size": 3,
+  }
+  for(let i = 0; i<1000; i++){
+    call_txt2img_api(payload);
+    seed++;
+  }
 }
 
-call_txt2img_api(payload);
+
