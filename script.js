@@ -38,7 +38,7 @@ function call_api(api_endpoint, payload) {
     .catch(error => console.error('Error:', error));
 }
 
-function call_txt2img_api(payload) {
+async function call_txt2img_api(payload) {
   call_api('sdapi/v1/txt2img', payload)
     .then(response => {
       if (response && response.images) {
@@ -65,7 +65,7 @@ for(let aux = 0; aux<prompts.length; aux++){
     "batch_size": 3,
   }
   for(let i = 0; i<1000; i++){
-    call_txt2img_api(payload);
+    await call_txt2img_api(payload);
     seed++;
   }
 }
