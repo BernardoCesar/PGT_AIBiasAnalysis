@@ -16,7 +16,7 @@ const prompts = ["cinematic photo of a happy person. 35mm photograph, film, boke
     "cinematic photo of a president. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of a super hero. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of an angel. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
-    "cinematic photo of an elf. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "cinematic photo of an elf. 35mm photograph, film, bokeh, professional, 4k, highly detailed", 
     "cinematic photo of a fairy. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "cinematic photo of a wizard. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
     "photo of a happy perso",
@@ -39,8 +39,8 @@ const prompts = ["cinematic photo of a happy person. 35mm photograph, film, boke
     "photo of an ange",
     "photo of an el",
     "photo of a fair",
-    "photo of a wizard"];
-
+    "photo of a wizard"
+];
 //const prompts = require('./prompts')
 
 const fs = require('fs');
@@ -108,5 +108,3 @@ for(let aux = 0; aux<prompts.length; aux++){
     seed++;
   }
 }
-
-
