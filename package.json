@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/BernardoCesar/PGT_AIBiasAnalysis#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "node-fetch": "^3.3.2",
