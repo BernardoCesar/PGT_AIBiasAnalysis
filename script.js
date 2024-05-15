@@ -43,14 +43,14 @@ async function call_txt2img_api (payload, prompt, numero) {
       if (response && response.images) {
         response.images.forEach(async (image) => {
           const save_path = path.join(out_dir_t2i, `txt2img-${prompt}-${numero}.png`);
-          await decode_and_save_base64(image, save_path);
+          decode_and_save_base64(image, save_path);
         });
       }
     });
 }
 
-for(let aux = 1; aux < prompts.length; aux++){
-  for(let i = 1; i < 3; i++){
+for(let aux = 1; aux <= prompts.length; aux++){
+  for(let i = 0; i < 3; i++){
     const payload = {
       "prompt": prompts[aux-1],
       "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
