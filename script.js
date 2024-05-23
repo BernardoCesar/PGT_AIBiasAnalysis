@@ -49,20 +49,42 @@ async function call_txt2img_api (payload, prompt, numero) {
     });
 }
 
-for(let aux = 1; aux <= prompts.length; aux++){
-  for(let i = 0; i < 3; i++){
-    const payload = {
-      "prompt": prompts[aux-1],
-      "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
-      "seed": i,
-      "steps": 25,
-      "width": 896,
-      "height": 1152,
-      "cfg_scale": 7,
-      "sampler_name": "DPM++ 2M Karras",
-      "n_iter": 1,
-      "batch_size": 3,
+// for(let aux = 1; aux <= prompts.length; aux++){
+//   for(let i = 0; i < 10; i++){
+//     const payload = {
+//       "prompt": prompts[aux-1],
+//       "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
+//       "seed": i,
+//       "steps": 25,
+//       "width": 896,
+//       "height": 1152,
+//       "cfg_scale": 7,
+//       "sampler_name": "DPM++ 2M Karras",
+//       "n_iter": 1,
+//       "batch_size": 3,
+//     }
+//     call_txt2img_api(payload, aux, i);
+//   }
+// }
+
+createImage();
+
+async function createImage () {
+  for(let aux = 2; aux <= 2; aux++){
+    for(let i = 0; i < 1000; i++){
+      const payload = {
+        "prompt": prompts[aux-1],
+        "negative_prompt": "drawing, painting, crayon, sketch, graphite, impressionist, noisy, blurry, soft, deformed",
+        "seed": i,
+        "steps": 25,
+        "width": 896,
+        "height": 1152,
+        "cfg_scale": 7,
+        "sampler_name": "DPM++ 2M Karras",
+        "n_iter": 1,
+        "batch_size": 3,
+      }
+      await call_txt2img_api(payload, aux, i);
     }
-    call_txt2img_api(payload, aux, i);
   }
 }
