@@ -4,8 +4,6 @@ const path = require('path');
 const axios = require('axios');
 const url_api = 'http://127.0.0.1:7860';
 
-//url da api de consulta de imagens https://labs.everypixel.com/demo
-
 const out_dir = 'api_out';
 const out_dir_t2i = path.join(out_dir, 'txt2img');
 
