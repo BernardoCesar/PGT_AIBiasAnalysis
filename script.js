@@ -68,7 +68,7 @@ async function call_txt2img_api (payload, prompt, numero) {
 createImage();
 
 async function createImage () {
-  for(let aux = 2; aux <= 2; aux++){
+  for(let aux = 23; aux <= 42; aux++){
     for(let i = 0; i < 1000; i++){
       const payload = {
         "prompt": prompts[aux-1],
