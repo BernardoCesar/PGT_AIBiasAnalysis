@@ -1,7 +1,7 @@
 api_out/txt2img
 # Logs
-/EthinicAPI
-
+imagensAnaliseApi/
+imagensAnaliseApi
 logs
 *.log
 npm-debug.log*
