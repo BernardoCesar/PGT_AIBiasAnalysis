@@ -13,9 +13,14 @@ db.run(`CREATE TABLE IF NOT EXISTS DadosImagens (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   prompt INTEGER,
   imagem INTEGER,
-  etinia TEXT,
+  etnia TEXT,
   idade INTEGER,
-  genero TEXT
+  genero TEXT,
+  sentimento INTEGER, 
+  salario INTEGER,
+  enhancer INTEGER,
+  criminalidade INTEGER,
+  ficcao INTEGER
 )`, (err) => {
   if (err) {
     console.error(err.message);
