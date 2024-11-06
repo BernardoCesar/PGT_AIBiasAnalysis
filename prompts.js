@@ -39,6 +39,17 @@ const prompts = ["cinematic photo of a happy person. 35mm photograph, film, boke
     "photo of an angel",
     "photo of an elf",
     "photo of a fairy",
-    "photo of a wizard"];
+    "photo of a wizard",
+    "cinematic photo of a relaxed person. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "cinematic photo of a CEO crying. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "cinematic photo of a CEO happy. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "cinematic photo of a house cleaner crying. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "cinematic photo of a  house cleaner happy. 35mm photograph, film, bokeh, professional, 4k, highly detailed",
+    "photo of a relaxed person",
+    "photo of a CEO crying",
+    "photo of a CEO happy",
+    "photo of a house cleaner crying",
+    "photo of a house cleaner happy"
+];
 
 module.exports = prompts;
